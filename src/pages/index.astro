@@ -1,0 +1,553 @@
+---
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Art Gallery">
+	<main>
+		<section class="hero">
+			<div class="image-container">
+				<h1>MODERN <br />ART GALLERY</h1>
+			</div>
+			<picture>
+				<source
+					srcset="/assets/images/header_pic_mob.jpg"
+					media="(width <= 600px)"
+				/>
+				<source
+					srcset="/assets/images/header_pic_tab.jpg"
+					media="(width < 1024px)"
+				/>
+				<img
+					src="/assets/images/header_pic_desk.jpg"
+					alt="Two people watching a picture from an Art gallery"
+				/>
+			</picture>
+			<div class="text-button">
+				<p>
+					The arts in the collection of the Modern Art Gallery all
+					started from a spark of inspiration. Will these pieces
+					inspire you? Visit us and find out.
+				</p>
+				<Button href="/location" text="OUR LOCATION" />
+			</div>
+		</section>
+		<section class="second-section">
+			<div class="first-content">
+				<article>
+					<h2>Your Day at the Gallery</h2>
+					<p>
+						Wander through our distinct collections and find new
+						insights about our artists. Dive into the details of
+						their creative process.
+					</p>
+				</article>
+				<picture>
+					<source
+						srcset="/assets/images/info_pic1.jpg"
+						media="(width <= 600px)"
+					/>
+					<source
+						srcset="/assets/images/info_pic_tab1.jpg"
+						media="(width < 1024px)"
+					/>
+					<img
+						src="/assets/images/info_pic_desk1.jpg"
+						alt="Art gallery"
+					/>
+				</picture>
+			</div>
+			<div class="second-content">
+				<picture class="second-content-left">
+					<source
+						srcset="/assets/images/info_pic2.jpg"
+						media="(width <= 600px)"
+					/>
+					<source
+						srcset="/assets/images/info_pic_tab2.jpg"
+						media="(width < 1024px)"
+					/>
+					<img
+						src="/assets/images/info_pic_desk2.jpg"
+						alt="A picture in a Art gallery's wall"
+					/>
+				</picture>
+				<div class="second-content-right">
+					<picture>
+						<source
+							srcset="/assets/images/info_pic3.jpg"
+							media="(width <= 600px)"
+						/>
+						<source
+							srcset="/assets/images/info_pic_tab3.jpg"
+							media="(width < 1024px)"
+						/>
+						<img
+							src="/assets/images/info_pic_desk3.jpg"
+							alt="The Art gallery' hall"
+						/>
+					</picture>
+					<article class="dark-article">
+						<h3>COME & BE INSPIRED</h3>
+						<p>
+							We’re excited to welcome you to our gallery and see
+							how our collections influence you.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer dark />
+</Layout>
+<style>
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		min-width: 1440px;
+		position: relative;
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr 540px 1fr;
+		place-items: center;
+		width: 100%;
+		height: 800px;
+		position: relative;
+		background: linear-gradient(
+			to right,
+			var(--black) 50%,
+			var(--white) 50%
+		);
+
+		& > picture {
+			width: 540px;
+			height: 100%;
+			position: absolute;
+			z-index: 1;
+			overflow: hidden;
+		}
+
+		& > picture > img {
+			width: 540px;
+			transition: all 1s ease;
+			object-position: center;
+			animation: zoom-in-out 20s infinite forwards;
+		}
+	}
+
+	@keyframes zoom-in-out {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.3);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	.image-container {
+		position: absolute;
+		width: 514px;
+		height: 174px;
+		top: 189px;
+		left: calc(50% - 297px);
+		transform: translateX(-50%);
+		z-index: 3;
+		mix-blend-mode: difference;
+	}
+
+	h1 {
+		width: 514px;
+		font-family: "Big Shoulders Display", sans-serif;
+		font-size: 96px;
+		font-weight: 900;
+		line-height: 88px;
+		text-transform: uppercase;
+		color: white;
+	}
+
+	.text-button {
+		position: absolute;
+		top: 190px;
+		left: calc(50% + 380px);
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		width: 350px;
+		height: 296px;
+		gap: 64px;
+		z-index: 2;
+
+		& > p {
+			color: var(--gray);
+			font-family: "Outfit", sans-serif;
+			font-size: 22px;
+			font-weight: 300;
+			line-height: 32px;
+		}
+	}
+
+	.second-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 30px;
+		width: 100%;
+		padding-block: 180px;
+	}
+
+	.first-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 400px;
+		width: 1110px;
+
+		& > article {
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+			width: 350px;
+			height: 280px;
+		}
+
+		& > article > h2 {
+			font-family: "Big Shoulders Display", sans-serif;
+			font-size: 60px;
+			font-weight: 900;
+			line-height: 60px;
+			text-transform: uppercase;
+			color: var(--black);
+		}
+
+		& > article > p {
+			font-family: "Outfit";
+			font-size: 22px;
+			font-weight: 300;
+			line-height: 32px;
+			color: var(--gray);
+		}
+
+		& > picture {
+			width: 635px;
+			height: 400px;
+			overflow: hidden;
+		}
+
+		& > picture > img {
+			width: 100%;
+			height: 100%;
+			object-position: center;
+			transition: all 1s ease;
+		}
+
+		& > picture:hover > img {
+			transform: scale(1.5);
+		}
+	}
+
+	.second-content {
+		display: flex;
+		gap: 30px;
+		width: 1110px;
+	}
+
+	.second-content-left {
+		width: 635px;
+		height: 720px;
+		overflow: hidden;
+
+		& > img {
+			width: 100%;
+			height: 100%;
+			object-position: center;
+			transition: all 1s ease;
+		}
+	}
+
+	.second-content-left:hover > img {
+		transform: scale(1.5);
+	}
+
+	.second-content-right {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		width: 445px;
+		height: 720px;
+
+		& > picture {
+			width: 100%;
+			height: 313px;
+			overflow: hidden;
+		}
+
+		& > picture > img {
+			width: 100%;
+			height: 100%;
+			object-position: center;
+			transition: all 1s ease;
+		}
+
+		& > picture:hover > img {
+			transform: scale(1.5);
+		}
+	}
+
+	.dark-article {
+		display: flex;
+		flex-direction: column;
+		gap: 32px;
+		width: 445px;
+		height: 377px;
+		background: var(--black);
+		color: var(--white);
+		padding: 65px 48px;
+
+		& > h3 {
+			font-family: "Big Shoulders Display", sans-serif;
+			font-size: 60px;
+			font-weight: 900;
+			line-height: 60px;
+			text-transform: uppercase;
+		}
+
+		& > p {
+			font-family: "Outfit", sans-serif;
+			font-size: 22px;
+			font-weight: 300;
+			line-height: 32px;
+		}
+	}
+
+	@media screen and (width < 1024px) {
+
+		main {
+			min-width: 768px;
+		}
+
+		.hero {
+			display: grid;
+			grid-template-columns: 1fr 331px;
+			place-items: start;
+			height: 700px;
+			background: var(--white);
+
+			& > picture {
+				width: 437px;
+				height: 100%;
+				position: absolute;
+				z-index: 1;
+				overflow: hidden;
+			}
+
+			& > picture > img {
+				width: 100%;
+				transition: all 1s ease;
+				object-position: center;
+				animation: zoom-in-out 20s infinite forwards;
+			}
+		}
+
+		.image-container {
+			position: absolute;
+			width: 339px;
+			height: 130px;
+			top: 145px;
+			left: calc(50% + 180px);
+			transform: translateX(-50%);
+		}
+
+		h1 {
+			width: 339px;
+			font-size: 70px;
+			line-height: 65px;
+		}
+
+		.text-button {
+			position: absolute;
+			top: 323px;
+			left: calc(50% + 180px);
+			transform: translateX(-50%);
+			width: 339px;
+			height: 232px;
+			gap: 48px;
+			z-index: 2;
+
+			& > p {
+				font-size: 18px;
+				line-height: 28px;
+			}
+		}
+
+		.second-section {
+			gap: 11px;
+			padding-block: 120px;
+		}
+
+		.first-content {
+			width: 689px;
+
+			& > article {
+				gap: 24px;
+				width: 223px;
+				height: 299px;
+			}
+
+			& > article > h2 {
+				font-size: 50px;
+				line-height: 45px;
+			}
+
+			& > article > p {
+				font-size: 18px;
+				line-height: 28px;
+			}
+
+			& > picture {
+				width: 398px;
+			}
+		}
+
+		.second-content {
+			gap: 11px;
+			width: 689px;
+		}
+
+		.second-content-left {
+			width: 398px;
+		}
+
+		.second-content-right {
+			gap: 11px;
+			width: 280px;
+		}
+
+		.dark-article {
+			gap: 24px;
+			width: 280px;
+			height: 396px;
+			padding: 85px 28px;
+
+			& > h3 {
+				font-size: 50px;
+				line-height: 45px;
+			}
+
+			& > p {
+				font-size: 18px;
+				line-height: 28px;
+			}
+		}
+	}
+
+	@media screen and (width <= 600px) {
+
+		main {
+			min-width: 375px;
+		}
+
+		.hero {
+			grid-template-columns: 1fr;
+			height: 630px;
+
+			& > picture {
+				width: 100%;
+				height: 240px;
+			}
+
+			& > picture > img {
+				width: 100%;
+			}
+		}
+
+		.image-container {
+			position: absolute;
+			width: 343px;
+			height: 110px;
+			top: 272px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		h1 {
+			width: 343px;
+			font-size: 60px;
+			line-height: 55px;
+		}
+
+		.text-button {
+			top: 414px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 343px;
+			height: 216px;
+			gap: 32px;
+			z-index: 2;
+		}
+
+		.second-section {
+			gap: 32px;
+		}
+
+		.first-content {
+			display: flex;
+			flex-direction: column-reverse;
+			gap: 25px;
+			width: 343px;
+			height: 568px;
+
+			& > article {
+				gap: 21px;
+				width: 100%;
+				height: 223px;
+			}
+
+			& > article > h2 {
+				font-size: 50px;
+				line-height: 45px;
+				text-wrap: balance;
+			}
+
+			& > picture {
+				width: 343px;
+				min-height: 320px;
+			}
+		}
+
+		.second-content {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			width: 343px;
+		}
+
+		.second-content-left {
+			width: 343px;
+		}
+
+		.second-content-right {
+			gap: 16px;
+			width: 343px;
+			height: 509px;
+
+			& > picture {
+				height: 200px;
+			}
+		}
+
+		.dark-article {
+			gap: 24px;
+			width: 343px;
+			height: 293px;
+			padding: 48px 24px;
+		}
+	}
+</style>

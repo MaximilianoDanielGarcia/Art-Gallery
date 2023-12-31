@@ -1,0 +1,267 @@
+---
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Art Gallery">
+    <main>
+        <section class="map">
+            <picture>
+                <source
+                    srcset="./assets/images/maps_mob.jpg"
+                    media="(width <= 600px)"
+                />
+                <source
+                    srcset="./assets/images/map_tab.jpg"
+                    media="(width < 1024px)"
+                />
+                <img src="./assets/images/map_desk.jpg" alt="Location map" />
+            </picture>
+            <div class="button-container">
+                <Button href="/" text="BACK TO HOME" reverse />
+            </div>
+        </section>
+        <section class="location">
+            <div>
+                <h2>OUR LOCATION</h2>
+
+                <address>
+                    <h3>99 King street</h3>
+                    <div>
+                        <div class="info-address">
+                            <p>Newport</p>
+                            <p>RI 02840</p>
+                            <p>United States of America</p>
+                        </div>
+                        <div class="hours">
+                            <p>
+                                Our newly opened gallery is located near the
+                                Edward King House on 99 King Street, the Modern
+                                Art Gallery is free to all visitors and open
+                                seven days a week from 8am to 9pm.
+                            </p>
+                        </div>
+                    </div>
+                </address>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    main {
+        width: 100%;
+        position: relative;
+        min-width: 1440px;
+    }
+
+    .map {
+        display: flex;
+        justify-content: center;
+        align-items: start;
+        width: 100%;
+        height: 600px;
+    }
+
+    .map > picture {
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .map > picture > img {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .button-container {
+        width: 1440px;
+        padding-left: 156px;
+    }
+
+    .location {
+        display: grid;
+        justify-content: center;
+        background: var(--black);
+        width: 100%;
+        height: 548px;
+
+        & > div {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            width: 1440px;
+            padding-top: 104px;
+        }
+
+        & > div > h2 {
+            width: 350px;
+            color: var(--white);
+            font-family: "Big Shoulders Display";
+            font-size: 70px;
+            font-weight: 900;
+            line-height: 70px;
+            text-transform: uppercase;
+            margin-left: 165px;
+        }
+    }
+
+    .location > div > address {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        font-style: normal;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        & > h3 {
+            color: var(--beige);
+            font-family: "Big Shoulders Display";
+            font-size: 36px;
+            font-weight: 900;
+            line-height: 36px;
+            text-transform: uppercase;
+        }
+    }
+
+    .info-address {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-address,
+    .hours {
+        font-family: "Outfit", sans-serif;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 32px;
+        color: var(--white);
+    }
+
+    .hours {
+        width: 540px;
+    }
+
+    @media screen and (width < 1024px) {
+        main {
+            min-width: 768px;
+        }
+
+        .button-container {
+            width: 768px;
+            padding-left: 39px;
+        }
+
+        .location {
+            height: 436px;
+
+            & > div {
+                display: flex;
+                justify-content: space-between;
+                width: 689px;
+                padding-top: 88px;
+                gap: 68px;
+            }
+
+            & > div > h2 {
+                width: 223px;
+                font-size: 55px;
+                line-height: 50px;
+                margin-left: 0px;
+            }
+        }
+
+        .location > div > address {
+            gap: 20px;
+
+            & > div {
+                gap: 20px;
+            }
+
+            & > h3 {
+                font-size: 32px;
+                line-height: 32px;
+            }
+        }
+
+        .info-address,
+        .hours {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .hours {
+            width: 398px;
+        }
+    }
+
+    @media screen and (width <= 600px) {
+        main {
+            min-width: 375px;
+        }
+
+        .button-container {
+            width: 375px;
+            padding-left: 0px;
+        }
+
+        .map {
+            height: 550px;
+        }
+
+        .map > picture > img {
+            height: 550px;
+        }
+
+        .location {
+            height: 493px;
+
+            & > div {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: start;
+                gap: 48px;
+                width: 343px;
+                padding-top: 48px;
+            }
+
+            & > div > h2 {
+                width: 343px;
+                font-size: 50px;
+                font-weight: 900;
+                line-height: 45px;
+                margin-left: 0px;
+            }
+        }
+
+        .location > div > address {
+            gap: 20px;
+
+            & > div {
+                gap: 20px;
+            }
+
+            & > h3 {
+                font-size: 32px;
+                line-height: 32px;
+            }
+        }
+
+        .info-address,
+        .hours {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .hours {
+            width: 343px;
+        }
+    }
+</style>
